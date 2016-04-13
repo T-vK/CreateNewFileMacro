@@ -1,1 +1,1 @@
-# CreateNewFileMakro
+# CreateNewFileMacro
