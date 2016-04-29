@@ -1,3 +1,4 @@
+Menu, Tray, Icon, Imageres.dll, 3 ; new file icon
 TrayTip, CreateFileMacro, Ctrl+Shift+M to create a new file in the current explorer window
 #If WinActive("ahk_class CabinetWClass") || WinActive("ahk_class Progman") || WinActive("ahk_class WorkerW")
     ^+m::CurrentWindowNewFile() ;Ctrl+Shift+M Create new, empty, entensionless file in the active explorer window or on the desktop
@@ -20,9 +21,17 @@ CurrentWindowNewFile() {
     items := sfv.SelectedItems
     Loop % items.Count
         sfv.SelectItem(items.Item(A_Index-1), 0)
-    FileAppend,, % sfv.Folder.Self.Path "\New File"
+    newFileName := "New File"
+    If FileExist(sfv.Folder.Self.Path "\" newFileName) {
+        Loop {
+            newFileName := "New File (" A_Index+1 ")"
+            If !FileExist(sfv.Folder.Self.Path "\" newFileName)
+                Break
+        }
+    }
+    FileAppend,, % sfv.Folder.Self.Path "\" newFileName
     explorerWin.Refresh()
-    sfv.SelectItem(items.Item("New File"), 1)
+    sfv.SelectItem(items.Item(newFileName), 1)
     Loop, 5 { ; Loop usually isn't necessary, but adds a bit of reliability.
         Sleep, 50
         Send {F2}
