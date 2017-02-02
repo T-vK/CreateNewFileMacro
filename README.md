@@ -3,7 +3,7 @@
 ## How to use 
 Pressing `Ctrl+Shift+N` creates a new blank file in the current explorer window. You can directly enter your file name + extension and hit enter. There won't be any prompts.
 
-## Classic vs CreateNewFileMakro
+## Classic vs CreateNewFileMacro
 Creating a file in Windows can take unnecessarely long. Especially if you want to use a special file extension.  
 The classic process would be `Right click` -> `Click "New"` -> `Click "Text file"` -> `Delete the default name "New Textfile.txt` -> `Write a new name e.g. "test.file"` -> `Press enter` -> `Now a dialog pops up aksing you if you really want to save it as .test instead of .txt and you have to click yes`.  
 
